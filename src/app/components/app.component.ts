@@ -365,4 +365,28 @@ export class AppComponent implements OnInit, AfterViewInit {
   get canViewOrders() {
     return true; //eg. viewOrdersPermission
   }
+
+  get canAccessLops() {
+    return true; //lop permission
+  }
+
+  get canAccessMonHocs() {
+    return true; //monhoc permission
+  }
+
+  get canAccessGiaoViens() {
+    return true;
+  }
+
+  get canAccessPhanCongs() {
+    return true;
+  }
+
+  get canAccessDieuKiens() {
+    return true;
+  }
+
+  get canAccessTkbs() {
+    return true;
+  }
 }

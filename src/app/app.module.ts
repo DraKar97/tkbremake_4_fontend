@@ -46,8 +46,6 @@ import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { ProductsComponent } from './components/products/products.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -62,10 +60,12 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
+
 import { LopsComponent } from './components/lops/lops.component';
-
-
-
+import { MonHocsComponent } from './components/monhocs/monhocs.component';
+import { GiaoViensComponent } from './components/giaoviens/giaoviens.component';
+import { PhanCongsComponent } from './components/phancongs/phancongs.component';
+import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
 
 @NgModule({
   imports: [
@@ -94,8 +94,6 @@ import { LopsComponent } from './components/lops/lops.component';
     LoginComponent,
     HomeComponent,
     CustomersComponent,
-    ProductsComponent,
-    OrdersComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     RolesManagementComponent, RoleEditorComponent,
@@ -113,7 +111,11 @@ import { LopsComponent } from './components/lops/lops.component';
     BootstrapDatepickerDirective,
     GroupByPipe,
 
-    LopsComponent
+    LopsComponent,
+    MonHocsComponent,
+    GiaoViensComponent,
+    PhanCongsComponent,
+    DieuKiensComponent,
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },

@@ -19,14 +19,14 @@ import { ColumnName } from 'src/app/models/column-name';
 
 
 @Component({
-    selector: 'lops',
-    templateUrl: './lops.component.html',
-    styleUrls: ['./lops.component.css'],
+    selector: 'phancongs',
+    templateUrl: './phancongs.component.html',
+    styleUrls: ['./phancongs.component.css'],
     animations: [fadeInOut]
 })
-export class LopsComponent {
-    accessTable = "LOP";
-    icon = require("../../assets/images/table_b.png");
+export class PhanCongsComponent {
+    accessTable = "PHANCONG";
+    icon = require("../../assets/images/table_b.png")
 
     rows = [];
     rowsCache = [];
