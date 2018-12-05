@@ -92,9 +92,8 @@ export class LopsComponent {
             .subscribe((res) => console.log(res)
                 , null
                 , () => {
-                    const getLopUrl = "/api/Table/get";
-                    const getParams = "?table=LOP";
-                    this.http.get(environment.baseUrl + getLopUrl + getParams)
+                    const getLopUrl = "/api/Table/get/LOP";
+                    this.http.get(environment.baseUrl + getLopUrl)
                         .subscribe((res: [{ l: string }]) => {
                             console.log(res);
                             this.rows = res;
