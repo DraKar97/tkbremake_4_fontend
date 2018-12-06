@@ -8,19 +8,22 @@ import { fadeInOut } from '../../services/animations';
 import { Utilities } from 'src/app/services/utilities';
 import { BackupData } from 'src/app/models/backup-data';
 import { ColumnName } from 'src/app/models/column-name';
+import { TKB } from 'src/app/models/tkb.model';
+import { TkbService } from 'src/app/services/tkb.service';
 import { DataService } from 'src/app/services/data.service';
 import { Lop } from 'src/app/models/lop.model';
+import { formatDate } from '@angular/common';
 
 
 @Component({
-    selector: 'lops',
-    templateUrl: './lops.component.html',
-    styleUrls: ['./lops.component.css'],
+    selector: 'tkbs-lop',
+    templateUrl: './tkbs-lop.component.html',
+    styleUrls: ['./tkbs-lop.component.css'],
     animations: [fadeInOut]
 })
-export class LopsComponent {
+export class TkbsLopComponent {
     accessTable = "LOP";
-    icon = require("../../assets/images/table_b.png");
+    icon = require("../../assets/images/view_b.png")
 
     rows = [];
     rowsCache = [];
@@ -32,20 +35,23 @@ export class LopsComponent {
 
     constructor(
         private dataService: DataService
+        , private tkbService: TkbService
     ) { }
 
     ngOnInit() {
         this.loadingIndicator = true;
-        this.columns = ColumnName[this.accessTable];
 
-        this.dataService.saveAll(this.accessTable, BackupData[this.accessTable]).subscribe(
-            (res) => console.log(res)
-            , null
-            , () => this.getData()
+        this.getAllLop();
+        const now = formatDate(Date.now(), 'yyyyMMdd', 'en');
+        this.tkbService.getTkbLop(new Date(), 1, { l: '1.3' }).subscribe(
+            (res: TKB[]) => console.log(res)
+        )
+        this.tkbService.getLogLop(new Date(), 1, { l: '1.3' }).subscribe(
+            (res: TKB[]) => console.log(res)
         )
     }
 
-    getData() {
+    getAllLop() {
         this.dataService.getAll(this.accessTable).subscribe(
             (res: Lop[]) => {
                 console.log(res);

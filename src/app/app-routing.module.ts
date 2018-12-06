@@ -8,12 +8,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
-import { CustomersComponent } from "./components/customers/customers.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+
+import { HoatDongsComponent } from './components/hoatdongs/hoatdongs.component';
 
 import { LopsComponent } from './components/lops/lops.component';
 import { MonHocsComponent } from './components/monhocs/monhocs.component';
@@ -21,11 +22,13 @@ import { GiaoViensComponent } from './components/giaoviens/giaoviens.component';
 import { PhanCongsComponent } from './components/phancongs/phancongs.component';
 import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
 
+import { TkbsLopComponent } from './components/tkbs-lop/tkbs-lop.component';
+
 
 const routes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard], data: { title: "Home" } },
   { path: "login", component: LoginComponent, data: { title: "Login" } },
-  { path: "customers", component: CustomersComponent, canActivate: [AuthGuard], data: { title: "Customers" } },
+  { path: "hoatdongs", component: HoatDongsComponent, canActivate: [AuthGuard], data: { title: "Customers" } },
   { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
   { path: "about", component: AboutComponent, data: { title: "About Us" } },
   { path: "home", redirectTo: "/", pathMatch: "full" },
@@ -35,7 +38,11 @@ const routes: Routes = [
   { path: "table/giaoviens", component: GiaoViensComponent, canActivate: [AuthGuard], data: { title: "Giáo viên" } },
   { path: "table/phancongs", component: PhanCongsComponent, canActivate: [AuthGuard], data: { title: "Phân công" } },
   { path: "table/dieukiens", component: DieuKiensComponent, canActivate: [AuthGuard], data: { title: "Điều kiện" } },
-  
+
+  { path: "tkb/tkb", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "Thời khóa biểu" } },
+  { path: "tkb/lop", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "TKB - Lớp" } },
+  { path: "tkb/giaovien", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "TKB - Giáo viên" } },
+
   { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } }
 ];
 

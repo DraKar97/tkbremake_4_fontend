@@ -45,7 +45,6 @@ import { GroupByPipe } from './pipes/group-by.pipe';
 import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { CustomersComponent } from './components/customers/customers.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -66,6 +65,12 @@ import { MonHocsComponent } from './components/monhocs/monhocs.component';
 import { GiaoViensComponent } from './components/giaoviens/giaoviens.component';
 import { PhanCongsComponent } from './components/phancongs/phancongs.component';
 import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
+import { DataService } from './services/data.service';
+import { DataEndpoint } from './services/data-endpoint.service';
+import { TkbsLopComponent } from './components/tkbs-lop/tkbs-lop.component';
+import { TkbEndpoint } from './services/tkb-endpoint.service';
+import { TkbService } from './services/tkb.service';
+import { HoatDongsComponent } from './components/hoatdongs/hoatdongs.component';
 
 @NgModule({
   imports: [
@@ -93,7 +98,6 @@ import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CustomersComponent,
     SettingsComponent,
     UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
     RolesManagementComponent, RoleEditorComponent,
@@ -111,11 +115,15 @@ import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
     BootstrapDatepickerDirective,
     GroupByPipe,
 
+    HoatDongsComponent,
+
     LopsComponent,
     MonHocsComponent,
     GiaoViensComponent,
     PhanCongsComponent,
     DieuKiensComponent,
+
+    TkbsLopComponent
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl },
@@ -129,7 +137,10 @@ import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
     AccountService,
     AccountEndpoint,
     LocalStoreManager,
-    EndpointFactory
+    EndpointFactory,
+
+    DataEndpoint, DataService,
+    TkbEndpoint, TkbService,
   ],
   bootstrap: [AppComponent]
 })

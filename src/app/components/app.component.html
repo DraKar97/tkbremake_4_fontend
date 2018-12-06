@@ -21,7 +21,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Dữ&nbsp;liệu
+                Dữ&nbsp;liệu <i class="fa fa-caret-down"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" (click)="hideBar()">
             <li routerLinkActive="active" *ngIf="canAccessLops"><a routerLink="/table/lops">Lớp</a></li>
@@ -38,7 +38,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Thời&nbsp;khóa&nbsp;biểu
+            Thời&nbsp;khóa&nbsp;biểu <i class="fa fa-caret-down"></i>
           </a>
           <div *ngIf="canAccessTkbs" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2" (click)="hideBar()">
         <li routerLinkActive="active"><a routerLink="/tkb/tkb">Xem&nbsp;tổng&nbsp;quát</a></li>
@@ -48,7 +48,7 @@
         <li routerLinkActive="active"><a routerLink="/tkb/giaovien">Xem&nbsp;theo&nbsp;giáo&nbsp;viên</a></li>
   </div>
   </li>
-  <li class="nav-item" routerLinkActive="active" *ngIf="canViewCustomers" (click)="hideBar()"><a routerLink="/customers">{{'mainMenu.Customers'|translate}}</a></li>
+  <li class="nav-item" routerLinkActive="active" *ngIf="canViewCustomers" (click)="hideBar()"><a routerLink="/hoatdongs">Hoạt&nbsp;động</a></li>
   <li class="nav-item" routerLinkActive="active" (click)="hideBar()"><a routerLink="/about">{{'mainMenu.About'|translate}}</a></li>
   </ul>
   <ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
@@ -56,7 +56,7 @@
         {{'mainMenu.Logout' | translate}}</a></li>
   </ul>
   <p class="app-component navbar-text navbar-right notifications-popup">
-    {{'app.Welcome' | translate}}
+    Chào
     <a class="app-component navbar-link user-name" [popover]="popTemplate" (onHidden)="markNotificationsAsRead()"
       placement="bottom" [popoverTitle]="notificationsTitle" href="javascript:;" triggers="focus">
       {{userName}}
