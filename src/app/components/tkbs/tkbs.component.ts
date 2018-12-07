@@ -10,15 +10,18 @@ import { TKB } from 'src/app/models/tkb.model';
 import { TkbService } from 'src/app/services/tkb.service';
 import { DataService } from 'src/app/services/data.service';
 import { Lop } from 'src/app/models/lop.model';
+import { formatDate } from '@angular/common';
+import { MessageSeverity, DialogType, AlertService } from 'src/app/services/alert.service';
+import { timer } from 'rxjs';
 
 
 @Component({
-    selector: 'banner-demo',
-    templateUrl: './banner-demo.component.html',
-    styleUrls: ['./banner-demo.component.css'],
+    selector: 'tkbs',
+    templateUrl: './tkbs.component.html',
+    styleUrls: ['./tkbs.component.css'],
     animations: [fadeInOut]
 })
-export class BannerDemoComponent {
+export class TkbsComponent {
     accessTable = "LOP";
     icon = require("../../assets/images/view_b.png");
     alert = require("../../assets/images/alert.png");
@@ -36,6 +39,7 @@ export class BannerDemoComponent {
     constructor(
         private dataService: DataService
         , private tkbService: TkbService
+        , private alertService: AlertService
     ) {
         for (var i = 2; i <= 8; i++) {
             this.tkb[i] = [];
@@ -91,5 +95,26 @@ export class BannerDemoComponent {
             if (l == lops[i].l)
                 return i;
         return null;
+    }
+
+    solve() {
+        timer(100).subscribe(() => {
+            this.alertService.showDialog('Bạn có muốn xóa TKB hiện tại để tạo TKB mới?<br/>Nhập "OK" để tiếp tục'
+                , DialogType.prompt
+                , (val) => {
+                    if (val != "OK") return;
+                    this.isSolving = true;
+                    var _res: boolean;
+                    this.tkbService.solve(this.tongTiet).subscribe(
+                        (res: boolean) => _res = res
+                        , () => this.isSolving = false
+                        , () => {
+                            this.getTKB();
+                            this.isSolving = _res ? false : true
+                        }
+
+                    )
+                })
+        })
     }
 }

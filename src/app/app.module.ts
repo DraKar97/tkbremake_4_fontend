@@ -71,6 +71,7 @@ import { TkbsLopComponent } from './components/tkbs-lop/tkbs-lop.component';
 import { TkbEndpoint } from './services/tkb-endpoint.service';
 import { TkbService } from './services/tkb.service';
 import { HoatDongsComponent } from './components/hoatdongs/hoatdongs.component';
+import { TkbsComponent } from './components/tkbs/tkbs.component';
 
 @NgModule({
   imports: [
@@ -123,6 +124,7 @@ import { HoatDongsComponent } from './components/hoatdongs/hoatdongs.component';
     PhanCongsComponent,
     DieuKiensComponent,
 
+    TkbsComponent,
     TkbsLopComponent
   ],
   providers: [

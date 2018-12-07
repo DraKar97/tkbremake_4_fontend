@@ -134,10 +134,6 @@ export class PhanCongsComponent {
         this.saveAll();
     }
 
-    showErrorAlert(caption: string, message: string) {
-        this.alertService.showMessage(caption, message, MessageSeverity.error);
-    }
-
     get searchInput() {
         return document.getElementsByTagName("search-box")[0]
             .firstElementChild

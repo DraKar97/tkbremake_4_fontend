@@ -43,12 +43,7 @@ export class TkbsLopComponent {
 
         this.getAllLop();
         const now = formatDate(Date.now(), 'yyyyMMdd', 'en');
-        this.tkbService.getTkbLop(new Date(), 1, { l: '1.3' }).subscribe(
-            (res: TKB[]) => console.log(res)
-        )
-        this.tkbService.getLogLop(new Date(), 1, { l: '1.3' }).subscribe(
-            (res: TKB[]) => console.log(res)
-        )
+
     }
 
     getAllLop() {

@@ -7,7 +7,7 @@
         <div>
             <div class="row control-box">
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-success" (click)="saveAll()" [disabled]="isSaving"><i *ngIf="isSaving" class="fa fa-spinner fa-spin"></i>Save</button>
+                    <button type="button" class="btn btn-success" (click)="saveAll()" [disabled]="isSaving || isLoading"><i *ngIf="isSaving" lass='fa fa-circle-o-notch fa-spin'></i>Save</button>
                     <button type="button" class="btn btn-danger" (click)="deleteAllCheck()">Delete</button>
                     <button type="button" class="btn btn-info" (click)="onRestore()">Restore</button>
                     <button type="button" class="btn btn-primary" (click)="getData()">Refresh</button>
@@ -38,7 +38,7 @@
                         <td><input type=text [(ngModel)]="o.inf" (keyup.enter)="focusNextRow()"></td>
                     </tr>
                     <tr *ngIf="isLoading" class="newRow">
-                        <td *ngIf="isLoading"> <i class="fa fa-spinner fa-spin"></i> </td>
+                        <td *ngIf="isLoading"> <i lass='fa fa-circle-o-notch fa-spin'></i> </td>
                         <td></td>
                         <td></td>
                         <td></td>

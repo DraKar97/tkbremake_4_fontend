@@ -1,0 +1,35 @@
+.text {
+    font-size: 16px;
+    padding: 6px;
+}
+
+td#bordernone{
+    border: none;
+    border-left: 0.1px solid #ddd;
+    border-right: 0.1px solid #ddd;
+}
+td#bordertop{
+    border: none;
+    border-left: 0.1px solid #ddd;
+    border-right: 0.1px solid #ddd;
+    border-top: 0.2px solid #ddd;
+}
+td#borderbot{
+    border: none;
+    border-left: 0.1px solid #ddd;
+    border-right: 0.1px solid #ddd;
+    border-bottom: 0.2px solid #ddd;
+}
+
+.table{
+    margin-top: 15px;
+}
+
+details {
+    border: 2px solid red;
+    padding: 10px;
+}
+
+summary>img{
+    width: 20px;
+}

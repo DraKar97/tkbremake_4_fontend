@@ -17,10 +17,12 @@ import { GiaoVien } from '../models/giao-vien.model';
 @Injectable()
 export class TkbEndpoint extends EndpointFactory {
 
+    private readonly _solveUrl: string = '/api/admin/solve';
     private readonly _tkbUrl: string = '/api/schedule/get';
     private readonly _logUrl: string = '/api/log/get';
     //private readonly _saveUrl: string = '/api/table/save';
 
+    get solveUrl() { return this.configurations.baseUrl + this._solveUrl; }
     get tkbUrl() { return this.configurations.baseUrl + this._tkbUrl; }
     get logUrl() { return this.configurations.baseUrl + this._logUrl; }
     //get saveUrl() { return this.configurations.baseUrl + this._saveUrl; }
@@ -33,57 +35,66 @@ export class TkbEndpoint extends EndpointFactory {
         super(http, configurations, injector);
     }
 
-    getTkb<T>(hieuLuc: Date, id: number): Observable<T> {
-        let endpointUrl = `${this.tkbUrl}/Schedule?HieuLuc=${hieuLuc}&Id=${id}`;
+    solve<T>(tongTiet: number): Observable<T> {
+        let endpointUrl = `${this.solveUrl}?tongtiet=${tongTiet}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.solve<T>(tongTiet));
             }));
     }
 
-    getTkbLop<T>(hieuLuc: Date, id: number, lop: Lop): Observable<T> {
+    getTkb<T>(id: number): Observable<T> {
+        let endpointUrl = `${this.tkbUrl}/Schedule?Id=${id}`;
+
+        return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
+            catchError(error => {
+                return this.handleError(error, () => this.getTkb<T>(id));
+            }));
+    }
+
+    getTkbLop<T>(hieuLuc: string, id: number, lop: Lop): Observable<T> {
         let endpointUrl = `${this.tkbUrl}/ClassSchedule?HieuLuc=${hieuLuc}&Id=${id}&Lop=${lop.l}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.getTkbLop<T>(hieuLuc, id, lop));
             }));
     }
 
-    getTkbGiaoVien<T>(hieuLuc: Date, id: number, giaoVien: GiaoVien): Observable<T> {
+    getTkbGiaoVien<T>(hieuLuc: string, id: number, giaoVien: GiaoVien): Observable<T> {
         let endpointUrl = `${this.tkbUrl}/ClassSchedule?HieuLuc=${hieuLuc}&Id=${id}&Lop=${giaoVien.gv}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.getTkbGiaoVien<T>(hieuLuc, id, giaoVien));
             }));
     }
 
-    getLog<T>(hieuLuc: Date, id: number): Observable<T> {
-        let endpointUrl = `${this.logUrl}/LOG?HieuLuc=${hieuLuc}&Id=${id}`;
+    getLog<T>(id: number): Observable<T> {
+        let endpointUrl = `${this.logUrl}/LOG?Id=${id}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.getLog<T>(id));
             }));
     }
 
-    getLogLop<T>(hieuLuc: Date, id: number, lop: Lop): Observable<T> {
+    getLogLop<T>(hieuLuc: string, id: number, lop: Lop): Observable<T> {
         let endpointUrl = `${this.logUrl}/LOGLOP?HieuLuc=${hieuLuc}&Id=${id}&Lop=${lop.l}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.getLogLop<T>(hieuLuc, id, lop));
             }));
     }
 
-    getLogGiaoVien<T>(hieuLuc: Date, id: number, giaoVien: GiaoVien): Observable<T> {
+    getLogGiaoVien<T>(hieuLuc: string, id: number, giaoVien: GiaoVien): Observable<T> {
         let endpointUrl = `${this.logUrl}/LOGGV?HieuLuc=${hieuLuc}&Id=${id}&Lop=${giaoVien.gv}`;
 
         return this.http.get<T>(endpointUrl, this.getRequestHeaders()).pipe<T>(
             catchError(error => {
-                return this.handleError(error, () => this.getTkb<T>(hieuLuc, id));
+                return this.handleError(error, () => this.getLogGiaoVien<T>(hieuLuc, id, giaoVien));
             }));
     }
 

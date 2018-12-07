@@ -15,28 +15,31 @@ export class TkbService {
         private tkbEndpoint: TkbEndpoint
     ) { }
 
-
-    getTkb(hieuLuc: Date, id: number) {
-        return this.tkbEndpoint.getTkb(hieuLuc, id);
+    solve(tongTiet: number) {
+        return this.tkbEndpoint.solve(tongTiet);
     }
 
-    getTkbLop(hieuLuc: Date, id: number, lop: Lop) {
+    getTkb(id: number) {
+        return this.tkbEndpoint.getTkb(id);
+    }
+
+    getTkbLop(hieuLuc: string, id: number, lop: Lop) {
         return this.tkbEndpoint.getTkbLop(hieuLuc, id, lop);
     }
 
-    getTkbGiaoVien(hieuLuc: Date, id: number, giaoVien: GiaoVien) {
+    getTkbGiaoVien(hieuLuc: string, id: number, giaoVien: GiaoVien) {
         return this.tkbEndpoint.getTkbGiaoVien(hieuLuc, id, giaoVien);
     }
 
-    getLog(hieuLuc: Date, id: number) {
-        return this.tkbEndpoint.getLog(hieuLuc, id);
+    getLog(id: number) {
+        return this.tkbEndpoint.getLog(id);
     }
 
-    getLogLop(hieuLuc: Date, id: number, lop: Lop) {
+    getLogLop(hieuLuc: string, id: number, lop: Lop) {
         return this.tkbEndpoint.getLogLop(hieuLuc, id, lop);
     }
 
-    getLogGiaoVien(hieuLuc: Date, id: number, giaoVien: GiaoVien) {
+    getLogGiaoVien(hieuLuc: string, id: number, giaoVien: GiaoVien) {
         return this.tkbEndpoint.getLogGiaoVien(hieuLuc, id, giaoVien);
     }
 

@@ -22,7 +22,7 @@ import { GiaoViensComponent } from './components/giaoviens/giaoviens.component';
 import { PhanCongsComponent } from './components/phancongs/phancongs.component';
 import { DieuKiensComponent } from './components/dieukiens/dieukiens.component';
 
-import { TkbsLopComponent } from './components/tkbs-lop/tkbs-lop.component';
+import { TkbsComponent } from './components/tkbs/tkbs.component';
 
 
 const routes: Routes = [
@@ -39,9 +39,9 @@ const routes: Routes = [
   { path: "table/phancongs", component: PhanCongsComponent, canActivate: [AuthGuard], data: { title: "Phân công" } },
   { path: "table/dieukiens", component: DieuKiensComponent, canActivate: [AuthGuard], data: { title: "Điều kiện" } },
 
-  { path: "tkb/tkb", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "Thời khóa biểu" } },
-  { path: "tkb/lop", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "TKB Lớp" } },
-  { path: "tkb/giaovien", component: TkbsLopComponent, canActivate: [AuthGuard], data: { title: "TKB Giáo viên" } },
+  { path: "tkb/tkb", component: TkbsComponent, canActivate: [AuthGuard], data: { title: "Thời khóa biểu" } },
+  { path: "tkb/lop", component: TkbsComponent, canActivate: [AuthGuard], data: { title: "TKB Lớp" } },
+  { path: "tkb/giaovien", component: TkbsComponent, canActivate: [AuthGuard], data: { title: "TKB Giáo viên" } },
 
   { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } }
 ];
