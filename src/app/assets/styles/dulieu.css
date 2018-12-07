@@ -1,0 +1,22 @@
+table{
+    border: 2px solid #cecece;
+}
+
+th{
+    padding: 10;
+    border: 1px solid #ddd;
+    background-color: #f6f7f9;
+    text-align: center;
+}
+td{
+    border: 1px solid #ddd;
+}
+td>input{
+    width: 100%;
+    border: none;
+}
+
+.newRow{
+    text-align: center;
+    cursor: pointer;
+}

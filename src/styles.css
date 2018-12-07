@@ -6,7 +6,7 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import 'app/assets/styles/themes.css';
 
-
+@import 'app/assets/styles/dulieu.css';
 
 .navbar .nav li a:hover,
 .navbar.nav li.toolbaritem a:hover,

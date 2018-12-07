@@ -1,21 +1,54 @@
 <div class="container">
     <header class="pageHeader">
-        <h3><img [src]="icon">Danh&nbsp;sách&nbsp;phân&nbsp;công</h3>
+        <h3><img [src]="icon">{{pageName}}:&nbsp;<small>show {{rows.length}}/{{rowsCache.length}}</small></h3>
     </header>
 
     <div [@fadeInOut]>
         <div>
             <div class="row control-box">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
+                        <button type="button" class="btn btn-success" (click)="saveAll()" [disabled]="isSaving"><i *ngIf="isSaving" class="fa fa-spinner fa-spin"></i>Save</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteAllCheck()">Delete</button>
+                    <button type="button" class="btn btn-info" (click)="onRestore()">Restore</button>
+                    <button type="button" class="btn btn-primary" (click)="getData()">Refresh</button>
+                </div>
+                <div class="col-sm-6">
                     <div class="form-group search-box">
-                        <search-box (searchChange)="onSearchChanged($event)" placeholder="{{'todoDemo.management.Search' | translate}}"></search-box>
+                        <search-box (searchChange)="onSearchChanged($event)" placeholder="Tìm phân công"></search-box>
                     </div>
                 </div>
             </div>
-            <ngx-datatable class="material colored-header sm table-hover" [loadingIndicator]="loadingIndicator" [rows]="rows"
-                [rowHeight]="35" [headerHeight]="35" [footerHeight]="35" [columns]="columns" [scrollbarV]="verticalScrollbar"
-                [columnMode]="'force'">
-            </ngx-datatable>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" [(ngModel)]="isCheckAll" (click)="checkAll()"></th>
+                        <th>Mã giáo viên</th>
+                        <th>Mã môn</th>
+                        <th>Dạy lớp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of rows">
+                        <td><input type="checkbox" [(ngModel)]="o.check" (click)="unCheckAll()"></td>
+                        <td><input type=text [(ngModel)]="o.gv" (keyup.enter)="focusNextRow()"></td>
+                        <td><input type=text [(ngModel)]="o.mh" (keyup.enter)="focusNextRow()"></td>
+                        <td><input type=text [(ngModel)]="o.l" (keyup.enter)="focusNextRow()"></td>
+                    </tr>
+                    <tr *ngIf="isLoading" class="newRow">
+                        <td *ngIf="isLoading"> <i class="fa fa-spinner fa-spin"></i> </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr *ngIf="!isLoading" class="newRow">
+                        <td (click)="addRow()"> <i class="fa fa-plus"></i> </td>
+                        <td><input (focus)="addRow()"></td>
+                        <td><input (focus)="addRow()"></td>
+                        <td><input (focus)="addRow()"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
