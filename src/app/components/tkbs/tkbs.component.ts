@@ -110,6 +110,7 @@ export class TkbsComponent {
                         , () => this.isSolving = false
                         , () => {
                             this.getTKB();
+                            this.getLog();
                             this.isSolving = _res ? false : true
                         }
 
